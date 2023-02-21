@@ -60,16 +60,16 @@ public abstract class View implements Initializable, EventTarget {
         try {
             // Usage of GetResource in new View() may be unsafe if class is extended
             // 在这里就是为了从子类获取资源路径，所以是安全的
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml()));
+            FXMLLoader loader = new FXMLLoader(fxml());
             loader.setController(this);
             root = loader.load();
             scene.bind(root.sceneProperty());
             scene.addListener((observable, oldValue, newValue) -> {
                 if (newValue != null) {
                     if (ELEMENT_STYLE) {
-                        newValue.getStylesheets().add(getClass().getResource("/css/element-ui.css").toExternalForm());
+                        newValue.getStylesheets().add(FXApplication.class.getResource("/css/element-ui.css").toExternalForm());
                     }
-                    newValue.getStylesheets().add(getClass().getResource("/css/icon.css").toExternalForm());
+                    newValue.getStylesheets().add(FXApplication.class.getResource("/css/icon.css").toExternalForm());
 
                     newValue.windowProperty().addListener((observable1, oldValue1, newValue1) -> {
                         if (newValue1 != null) {
@@ -188,7 +188,7 @@ public abstract class View implements Initializable, EventTarget {
     /**
      * @return fxml路径
      */
-    public abstract String fxml();
+    public abstract URL fxml();
 
     /**
      * @return 视图根对象
