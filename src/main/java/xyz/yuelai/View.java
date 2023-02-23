@@ -49,12 +49,12 @@ public abstract class View implements Initializable, EventTarget {
 
     private ObjectProperty<Scene> scene = new SimpleObjectProperty<>();
 
-    /**
-     * 构造器之前初始化
-     */
+    /*
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
+*/
 
     public View() {
         try {
